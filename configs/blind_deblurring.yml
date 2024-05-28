@@ -1,0 +1,7 @@
+Denoising_steps: 10
+Optimization_steps: 100
+lr_blur: 0.0002
+lr_img: 0.003 #0.003
+delta_t: 100
+kernel_size: 41
+seed: 0

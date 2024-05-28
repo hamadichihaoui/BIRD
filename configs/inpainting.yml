@@ -1,0 +1,7 @@
+Optimization_steps: 200  
+lr: 0.01
+delta_t: 100
+seed: 0
+#Denoising_steps: 10
+
+

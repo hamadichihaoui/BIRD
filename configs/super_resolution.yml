@@ -1,0 +1,6 @@
+Optimization_steps: 100 #60
+lr: 0.001 #0.003
+delta_t: 100
+downsampling_ratio: 8
+seed: 0
+#Denoising_steps: 10

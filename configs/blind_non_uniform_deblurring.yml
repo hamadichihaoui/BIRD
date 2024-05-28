@@ -1,0 +1,4 @@
+Optimization_steps: 25
+lr: 0.002 #0.003
+delta_t: 100
+seed: 0
