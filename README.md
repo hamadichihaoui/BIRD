@@ -1,5 +1,8 @@
 # Blind Image Restoration via Fast Diffusion Inversion (BIRD)
 
+This is the official implementation of "Blind Image Restoration via Fast Diffusion Inversion
+". [arxiv](https://arxiv.org/abs/2405.19572)
+
 ## Environment 
 ```
 pip install numpy torch blobfile tqdm pyYaml pillow    
