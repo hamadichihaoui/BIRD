@@ -2,6 +2,8 @@ import math
 import torch
 import torch.nn as nn
 
+from huggingface_hub import PyTorchModelHubMixin
+
 
 def get_timestep_embedding(timesteps, embedding_dim):
     """
@@ -189,7 +191,7 @@ class AttnBlock(nn.Module):
         return x+h_
 
 
-class Model(nn.Module):
+class Model(nn.Module, PyTorchModelHubMixin):
     def __init__(self, config):
         super().__init__()
         self.config = config
