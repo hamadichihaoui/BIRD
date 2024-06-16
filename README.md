@@ -5,7 +5,7 @@ This is the official implementation of "Blind Image Restoration via Fast Diffusi
 
 ## Environment 
 ```
-pip install numpy torch blobfile tqdm pyYaml pillow    
+pip install numpy torch blobfile tqdm pyYaml pillow diffusers   
 ```
 
 ## Pre-Trained Models
@@ -50,6 +50,20 @@ python super_resolution.py
 ![image info](results/super_resolution.png)
 
 
+## References
 
+If you find this repository useful for your research, please cite the following work.
+
+
+
+```
+@article{chihaoui2024blind,
+  title={Blind Image Restoration via Fast Diffusion Inversion},
+  author={Chihaoui, Hamadi and Lemkhenter, Abdelhak and Favaro, Paolo},
+  journal={arXiv preprint arXiv:2405.19572},
+  year={2024}
+}
+
+```
 
 
