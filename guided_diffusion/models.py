@@ -201,7 +201,7 @@ class Model(nn.Module,
                 )
             },
             repo_url="https://github.com/hamadichihaoui/BIRD", tags=["bird"], pipeline_tag="image-to-image"):
-    def __init__(self, config):
+    def __init__(self, config: Namespace):
         super().__init__()
         self.config = config
         ch, out_ch, ch_mult = config.model.ch, config.model.out_ch, tuple(config.model.ch_mult)
