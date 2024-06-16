@@ -5,7 +5,7 @@ This is the official implementation of "Blind Image Restoration via Fast Diffusi
 
 ## Environment 
 ```
-pip install numpy torch blobfile tqdm pyYaml pillow diffusers   
+pip install numpy torch blobfile tqdm pyYaml pillow diffusers huggingface_hub
 ```
 
 ## Pre-Trained Models
