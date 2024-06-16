@@ -13,7 +13,7 @@ def load_pretrained_diffusion_model(config):
     model.to(device)
     model.eval()
     for param in model.parameters():
-        param.requires_grad = False
+        param.requires_grad = False  
     return model, device
 
 
