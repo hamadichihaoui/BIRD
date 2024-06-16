@@ -5,12 +5,12 @@ This is the official implementation of "Blind Image Restoration via Fast Diffusi
 
 ## Environment 
 ```
-pip install numpy torch blobfile tqdm pyYaml pillow diffusers   
+pip install numpy torch blobfile tqdm pyYaml pillow diffusers huggingface_hub
 ```
 
 ## Pre-Trained Models
 
-For face restoration, download the pretrained [model](https://drive.google.com/file/d/1qMs7tNGV3tkOZNKH5L130dkwsmobEJdh/view?usp=sharing) from and put it into ```checkpoints/```.
+For face restoration, the pretrained model can be found [here](https://huggingface.co/cvg-unibe/bird-celeba-hq). The scripts will automatically load the checkpoint from the Hugging Face hub.
 
 
 ## Blind Deblurring

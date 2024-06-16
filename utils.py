@@ -16,9 +16,7 @@ def ensure_reproducibility(seed):
     np.random.seed(seed)
     torch.manual_seed(seed)
 
-
-
-def dict2namespace(config):
+def dict2namespace(config: dict) -> argparse.Namespace:
     namespace = argparse.Namespace()
     for key, value in config.items():
         if isinstance(value, dict):
@@ -302,11 +300,9 @@ def fcn(num_input_channels=200, num_output_channels=1, num_hidden=1000):
     return model2
 
 def load_pretrained_diffusion_model(config):
-    model = Model(config)
-    ckpt = "checkpoints/celeba_hq.ckpt"
+    model = Model.from_pretrained("cvg-unibe/bird-celeba-hq")
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     config.device = device
-    model.load_state_dict(torch.load(ckpt, map_location=device))
     model.to(device)
     model.eval()
     for param in model.parameters():

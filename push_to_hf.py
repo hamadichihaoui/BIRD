@@ -13,8 +13,7 @@ def load_pretrained_diffusion_model(config):
     model.to(device)
     model.eval()
     for param in model.parameters():
-        param.requires_grad = False
-    model = torch.nn.DataParallel(model)    
+        param.requires_grad = False  
     return model, device
 
 
@@ -26,7 +25,7 @@ config = dict2namespace(config1)
 model, device = load_pretrained_diffusion_model(config)
 
 # push to hub
-model.push_to_hub("nielsr/bird-demo")
+model.push_to_hub("cvg-unibe/bird-celeba-hq")
 
 # reload
-model = Model.from_pretrained("nielsr/bird-demo")
+model = Model.from_pretrained("cvg-unibe/bird-celeba-hq")

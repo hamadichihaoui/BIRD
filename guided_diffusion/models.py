@@ -1,3 +1,4 @@
+from argparse import Namespace
 import math
 import torch
 import torch.nn as nn
@@ -191,8 +192,35 @@ class AttnBlock(nn.Module):
         return x+h_
 
 
-class Model(nn.Module, PyTorchModelHubMixin):
-    def __init__(self, config):
+def namespace2dict(config: Namespace) -> dict: 
+  v = dict(vars(config))
+  for key,value in v.items():
+    if isinstance(value, Namespace):
+      v[key] = namespace2dict(value)
+  return v
+
+
+def dict2namespace(config: dict) -> Namespace:
+    namespace = Namespace()
+    for key, value in config.items():
+        if isinstance(value, dict):
+            new_value = dict2namespace(value)
+        else:
+            new_value = value
+        setattr(namespace, key, new_value)
+    return namespace
+
+
+class Model(nn.Module,
+            PyTorchModelHubMixin,
+            coders={
+                Namespace: (
+                    lambda x: namespace2dict(x),
+                    lambda data: dict2namespace(data)
+                )
+            },
+            repo_url="https://github.com/hamadichihaoui/BIRD", tags=["bird"], pipeline_tag="image-to-image"):
+    def __init__(self, config: Namespace):
         super().__init__()
         self.config = config
         ch, out_ch, ch_mult = config.model.ch, config.model.out_ch, tuple(config.model.ch_mult)
