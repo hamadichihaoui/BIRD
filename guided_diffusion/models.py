@@ -1,3 +1,4 @@
+from argparse import Namespace
 import math
 import torch
 import torch.nn as nn
@@ -191,7 +192,15 @@ class AttnBlock(nn.Module):
         return x+h_
 
 
-class Model(nn.Module, PyTorchModelHubMixin, repo_url="https://github.com/hamadichihaoui/BIRD", tags=["bird"], pipeline_tag="image-to-image"):
+class Model(nn.Module,
+            PyTorchModelHubMixin,
+            coders={
+                Namespace: (
+                    lambda x: vars(x),  # Encoder: how to convert a `Namespace` to a valid jsonable value?
+                    lambda data: Namespace(**data),  # Decoder: how to reconstruct a `Namespace` from a dictionary?
+                )
+            },
+            repo_url="https://github.com/hamadichihaoui/BIRD", tags=["bird"], pipeline_tag="image-to-image"):
     def __init__(self, config):
         super().__init__()
         self.config = config
