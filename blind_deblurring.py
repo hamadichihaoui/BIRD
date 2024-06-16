@@ -22,7 +22,7 @@ ensure_reproducibility(task_config['seed'])
 
 with open( "data/celeba_hq.yml", "r") as f:
     config1 = yaml.safe_load(f)
-config = dict2namespace(config1)
+config = n(config1)
 model, device = load_pretrained_diffusion_model(config)
 
 ### Define the DDIM scheduler
