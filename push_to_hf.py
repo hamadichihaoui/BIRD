@@ -25,7 +25,7 @@ config = dict2namespace(config1)
 model, device = load_pretrained_diffusion_model(config)
 
 # push to hub
-model.push_to_hub("cvg-unibe/bird-celeba-hq")
+model.push_to_hub("nielsr/bird-celeba-hq")
 
 # reload
-model = Model.from_pretrained("cvg-unibe/bird-celeba-hq")
+model = Model.from_pretrained("nielsr/bird-celeba-hq")
