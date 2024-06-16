@@ -192,12 +192,32 @@ class AttnBlock(nn.Module):
         return x+h_
 
 
+def serialize(config: Namespace) -> dict: 
+  # creating a copy so we will not affect the original variable when serializing and when doing a recursive function calling 
+  v = dict(vars(config))
+  for key,value in v.items():
+    if isinstance(value, Namespace):
+      v[key] = serialize(value)
+  return v
+
+
+def dict2namespace(config: dict) -> Namespace:
+    namespace = Namespace()
+    for key, value in config.items():
+        if isinstance(value, dict):
+            new_value = dict2namespace(value)
+        else:
+            new_value = value
+        setattr(namespace, key, new_value)
+    return namespace
+
+
 class Model(nn.Module,
             PyTorchModelHubMixin,
             coders={
                 Namespace: (
-                    lambda x: vars(x),  # Encoder: how to convert a `Namespace` to a valid jsonable value?
-                    lambda data: Namespace(**data),  # Decoder: how to reconstruct a `Namespace` from a dictionary?
+                    lambda x: serialize(x),
+                    lambda data: dict2namespace(data)
                 )
             },
             repo_url="https://github.com/hamadichihaoui/BIRD", tags=["bird"], pipeline_tag="image-to-image"):

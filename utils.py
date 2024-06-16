@@ -16,9 +16,7 @@ def ensure_reproducibility(seed):
     np.random.seed(seed)
     torch.manual_seed(seed)
 
-
-
-def dict2namespace(config):
+def dict2namespace(config: dict) -> argparse.Namespace:
     namespace = argparse.Namespace()
     for key, value in config.items():
         if isinstance(value, dict):
