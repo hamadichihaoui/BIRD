@@ -192,12 +192,11 @@ class AttnBlock(nn.Module):
         return x+h_
 
 
-def serialize(config: Namespace) -> dict: 
-  # creating a copy so we will not affect the original variable when serializing and when doing a recursive function calling 
+def namespace2dict(config: Namespace) -> dict: 
   v = dict(vars(config))
   for key,value in v.items():
     if isinstance(value, Namespace):
-      v[key] = serialize(value)
+      v[key] = namespace2dict(value)
   return v
 
 
@@ -216,7 +215,7 @@ class Model(nn.Module,
             PyTorchModelHubMixin,
             coders={
                 Namespace: (
-                    lambda x: serialize(x),
+                    lambda x: namespace2dict(x),
                     lambda data: dict2namespace(data)
                 )
             },
