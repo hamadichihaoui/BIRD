@@ -10,7 +10,7 @@ pip install numpy torch blobfile tqdm pyYaml pillow diffusers
 
 ## Pre-Trained Models
 
-For face restoration, the pretrained model can be found [here](https://drive.google.com/file/d/1qMs7tNGV3tkOZNKH5L130dkwsmobEJdh/view?usp=sharing).
+For face restoration, the pretrained model can be found [here](https://huggingface.co/cvg-unibe/bird-celeba-hq). The scripts will automatically load the checkpoint from the Hugging Face hub.
 
 
 ## Blind Deblurring
